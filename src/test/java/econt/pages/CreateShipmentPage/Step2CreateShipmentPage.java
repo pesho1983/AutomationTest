@@ -1,4 +1,4 @@
-package econt.pages;
+package econt.pages.CreateShipmentPage;
 
 import econt.Utils.Utils;
 import net.serenitybdd.core.annotations.findby.FindBy;

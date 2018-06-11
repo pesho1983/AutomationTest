@@ -53,4 +53,24 @@ public class CreateShipmentSteps {
     public void completeCreateShipmentStepTwoFormForReceiver(@Transpose Map<String, String> data) throws Throwable {
         createShipment.completeCreateShipmentFormReceiverStep2(data);
     }
+
+    @When("^complete create shipment Step One form packages$")
+    public void completeCreateShipmentStepOneFormPackages(@Transpose Map<String, String> data) throws Throwable {
+        createShipment.completeCretateShipmentFormStep1Packages(data);
+    }
+
+    @When("^complete create shipment Step One form pallets$")
+    public void completeCreateShipmentStepOneFormPallets(@Transpose Map<String, String> data) throws Throwable {
+        createShipment.completeCreateShipmentFormStep1Pallets(data);
+    }
+
+    @Then("^\"([^\"]*)\" error message must displayed$")
+    public void errorMessageMustDisplayed(String error) throws Throwable {
+        createShipment.errorMessagePallets(error);
+    }
+
+    @When("^complete create shipment Step One form pallets with incorrect data$")
+    public void completeCreateShipmentStepOneFormPalletsWithIncorrectData(@Transpose Map<String, String> data) throws Throwable {
+        createShipment.completeCreateShipmentFormStep1PalletsIncorrect(data);
+    }
 }
