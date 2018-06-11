@@ -16,7 +16,7 @@ import java.util.Random;
 public class Utils {
 
     public final static String WEBSITE_URL = "https://portal-stage.econt.com/";
-    private final static String HOME_PATH = "C:/Users/rkolev/Desktop/uploadTestImages/";
+   private final static String HOME_PATH = "C:/Users/rkolev/Desktop/uploadTestImages/";
 
     public static String productIndividualXpath(WebElementFacade target, String replace) {
         String targetProduct = target.getWrappedElement().toString();

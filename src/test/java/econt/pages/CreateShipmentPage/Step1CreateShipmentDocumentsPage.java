@@ -1,4 +1,4 @@
-package econt.pages;
+package econt.pages.CreateShipmentPage;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -10,17 +10,14 @@ import java.util.Map;
 
 import static econt.Utils.Utils.WEBSITE_URL;
 
-@DefaultUrl(WEBSITE_URL + "services/order-courier")
-public class CreateShipmentPage extends PageObject {
+@DefaultUrl(WEBSITE_URL + "services/shipment-create/parcelType")
+public class Step1CreateShipmentDocumentsPage extends PageObject {
 
     @FindBy(id = "site-shipment")
     private WebElementFacade iframeElement;
 
     @FindBy(css = "label[for='rb-is_document']")
     private WebElementFacade documentsRadioButton;
-
-    @FindBy(css = "label[for='rb-is_package']")
-    private WebElementFacade packegesRadioButton;
 
     @FindBy(css = "label[for='rb-is_pallet']")
     private WebElementFacade palettsRadioButton;
@@ -31,26 +28,28 @@ public class CreateShipmentPage extends PageObject {
     //Not required
     @FindBy(name = "package_description")
     private WebElementFacade packageDescription;
-
-
+    //Not required
     @FindBy(css = "label[for='specify_detailed_scecification']")
     private WebElementFacade detailedSpecificationCheckbox;
 
     @FindBy(css = ".btn.ng-binding")
     private WebElementFacade nextStepButton;
 
+    @FindBy(id = "step_2")
+    private WebElementFacade succsessStep1;
 
-    public void completeOrderCourierForm(Map<String, String> data) {
+    public void completeCreateShipmentForm(Map<String, String> data) {
         getDriver().switchTo().frame((WebElement) this.iframeElement);
         this.documentsRadioButton.click();
-
-
-        this.packegesRadioButton.click();
-        this.palettsRadioButton.click();
         this.packageQuantity.type(data.get("Quantity"));
-        this.packageQuantity.type(data.get("Description"));
+        this.packageDescription.type(data.get("Description"));
+        this.nextStepButton.click();
 
         getDriver().switchTo().parentFrame();
     }
 
+    public boolean successStep1() {
+        getDriver().switchTo().frame((WebElement) this.iframeElement);
+        return succsessStep1.isCurrentlyVisible();
+    }
 }
