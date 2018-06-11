@@ -5,6 +5,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.Map;
 
@@ -55,6 +57,7 @@ public class EkontPartnersPage extends PageObject {
 
 
     public void gdprAgree() {
+        waitFor(ExpectedConditions.elementToBeClickable(gdprAgree));
         gdprAgree.click();
     }
 
